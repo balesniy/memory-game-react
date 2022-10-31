@@ -1,7 +1,5 @@
 import React from "react";
 
-// let counter = 0;
-
 const Card = (props) => {
   const { onCardClick, children, visible, finished } = props;
   const className = `${visible ? "grid-card-show" : ""} ${
@@ -10,7 +8,7 @@ const Card = (props) => {
 
   return (
     <div
-      className={`grid-card ${props.className} ${className}`}
+      className={`grid-card card ${props.className} ${className}`}
       onClick={onCardClick}
     >
       {children}

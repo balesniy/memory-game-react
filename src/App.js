@@ -3,22 +3,25 @@ import React, { useState } from "react";
 import InitialPage from "./InitialPage";
 import ResultsPage from "./ResultsPage";
 import GamePage from "./GamePage";
-
-function PageLayout({ children }) {
-  return <div className="text-center p-4 d-flex flex-column">{children}</div>;
-}
+import PageLayout from "./PageLayout";
 
 const Page = {
   INITIAL: "initial",
   GAME: "game",
-  RESULTS: "results"
-}
+  RESULTS: "results",
+};
 
 export default function App({ getImages }) {
   const [finishedItems, setFinishedItems] = useState([]);
   const [stepsCount, setStepsCount] = useState(0);
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(Page.INITIAL);
+  const [results, setResults] = useState([]);
+
+  const handleReset = () => {
+    setResults([...results, stepsCount]);
+    resetGame();
+  };
 
   const resetGame = () => {
     setFinishedItems([]);
@@ -41,7 +44,7 @@ export default function App({ getImages }) {
     images,
     stepsCount,
     setStepsCount,
-    showResults
+    onShowResults: showResults,
   };
 
   const getPage = (page) => {
@@ -51,7 +54,13 @@ export default function App({ getImages }) {
       case Page.GAME:
         return <GamePage {...gameProps} />;
       case Page.RESULTS:
-        return <ResultsPage stepsCount={stepsCount} onResetGame={resetGame} />;
+        return (
+          <ResultsPage
+            stepsCount={stepsCount}
+            onResetGame={handleReset}
+            results={results}
+          />
+        );
       default:
         return null;
     }

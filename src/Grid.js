@@ -41,7 +41,7 @@ const Grid = (props) => {
             key={item.id}
             visible={visibleItems.includes(index)}
             finished={finishedItems.includes(index)}
-            className={`${columnsCount === 3 ? "col-4" : "col-3"} card`}
+            className={`${columnsCount === 3 ? "col-4" : "col-3"}`}
             onCardClick={() => handleCardClick(index)}
           >
             <img

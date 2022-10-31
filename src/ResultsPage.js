@@ -1,33 +1,26 @@
-import React, { useState} from "react";
+import React from "react";
 import ResultsTable from "./ResultsTable";
 
-export default function ResultsPage({ stepsCount, onResetGame }) {
-  const [results, setResults] = useState([]);
-
-  const handleReset = () => {
-    setResults([...results, stepsCount])
-    onResetGame()
-  }
-
+const ResultsPage = ({ stepsCount, results, onResetGame }) => {
+  const isRecord = results.length && stepsCount < Math.min(...results);
   return (
     <div>
-            Finished in {stepsCount} steps
-            <br />
-            <img alt="большая и радостная картинка" />
-            <br />
-            <button onClick={handleReset} className="btn btn-warning mb-4">
-              New Game
-            </button>
-            <br />
-            {results.length > 1 && stepsCount < Math.min(...results) ? (
-              <p>новый рекорд!!!</p>
-            ) : null}
-            {results.length ? (
-              <>
-                <h3>Ваши достижения:</h3>
-                <ResultsTable current={stepsCount} results={results} />
-              </>
-            ) : null}
-          </div>
-  )
-}
+      <p>Finished in {stepsCount} steps</p>
+
+      {isRecord ? <p>новый рекорд!!!</p> : null}
+      {results.length ? (
+        <>
+          <h3>Ваши достижения:</h3>
+          <ResultsTable current={stepsCount} results={results} />
+        </>
+      ) : (
+        <h3>Это ваша первая победа!</h3>
+      )}
+      <button onClick={onResetGame} className="btn btn-warning mb-4">
+        New Game
+      </button>
+    </div>
+  );
+};
+
+export default ResultsPage;

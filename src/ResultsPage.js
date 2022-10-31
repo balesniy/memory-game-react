@@ -1,12 +1,12 @@
 import React, { useState} from "react";
 import ResultsTable from "./ResultsTable";
 
-export default function ResultsPage({ stepsCount, resetGame }) {
+export default function ResultsPage({ stepsCount, onResetGame }) {
   const [results, setResults] = useState([]);
 
   const handleReset = () => {
     setResults([...results, stepsCount])
-    resetGame()
+    onResetGame()
   }
 
   return (

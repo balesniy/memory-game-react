@@ -17,7 +17,7 @@ const Page = {
 export default function App({ getImages }) {
   const [finishedItems, setFinishedItems] = useState([]);
   const [stepsCount, setStepsCount] = useState(0);
-  const [list, setList] = useState([]);
+  const [images, setImages] = useState([]);
   const [page, setPage] = useState(Page.INITIAL);
 
   const resetGame = () => {
@@ -27,7 +27,7 @@ export default function App({ getImages }) {
   };
 
   const handleStart = (pairsCount) => {
-    setList(getImages(pairsCount));
+    setImages(getImages(pairsCount));
     setPage(Page.GAME);
   };
 
@@ -38,7 +38,7 @@ export default function App({ getImages }) {
   const gameProps = {
     finishedItems,
     setFinishedItems,
-    list,
+    images,
     stepsCount,
     setStepsCount,
     showResults
@@ -51,7 +51,7 @@ export default function App({ getImages }) {
       case Page.GAME:
         return <GamePage {...gameProps} />;
       case Page.RESULTS:
-        return <ResultsPage stepsCount={stepsCount} resetGame={resetGame} />;
+        return <ResultsPage stepsCount={stepsCount} onResetGame={resetGame} />;
       default:
         return null;
     }

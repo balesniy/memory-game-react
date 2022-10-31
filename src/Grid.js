@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Card from "./Card";
 
 const Grid = (props) => {
-  const { list = [], finishedItems, checkItems } = props;
+  const { images = [], finishedItems, checkItems } = props;
 
   const [visibleItems, setVisibleItems] = useState([]);
 
@@ -31,12 +31,12 @@ const Grid = (props) => {
     }
   };
 
-  const columnsCount = list.length === 12 ? 3 : 4;
+  const columnsCount = images.length === 12 ? 3 : 4;
 
   return (
     <div className="container">
       <div className="row no-gutters">
-        {list.map((item, index) => (
+        {images.map((item, index) => (
           <Card
             key={item.id}
             visible={visibleItems.includes(index)}

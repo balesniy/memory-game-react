@@ -1,0 +1,69 @@
+.progress {
+  height: 5px;
+  background:#9f3f2f;
+}
+.progress-wrapper {
+  border: solid #3f0041 3px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.grid-card {
+  position: relative;
+  transform: translateZ(0);
+  // transform-style: preserve-3d;
+
+  &::after {
+    content: "";
+    background: linear-gradient(to right bottom, #3f0041, #9f3f2f);
+    // background-image: url(https://images.unsplash.com/photo-1533038590840-1cde6e668a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw2MjU4MHwwfDF8c2VhcmNofDJ8fGZsb3dlcnxlbnwwfHx8fDE2NjY2MTgyMDA&ixlib=rb-4.0.3&q=80&w=200);
+    // background-size: contain;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(0) perspective(100px);
+    transition: .6s;
+    backface-visibility: hidden;
+  }
+}
+
+.grid-img {
+  height: 100px;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center;
+  transform: rotateY(180deg) perspective(100px);
+  transition: .6s;
+  backface-visibility: hidden;
+}
+
+.grid-card-show {
+  &::after {
+    transform: rotateY(180deg) perspective(100px);
+  }
+
+  .grid-img {
+    transform: rotateY(0) perspective(100px);
+  }
+}
+
+.grid-card-finished {
+  opacity: .5;
+}
+
+.results {
+  // border: solid grey 1px;
+  
+  td {
+    border: solid grey 1px;
+    padding: 5px;
+    text-align: center;
+    &.current {
+      background-color: pink;
+    }
+  }
+}

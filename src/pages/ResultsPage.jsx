@@ -1,13 +1,13 @@
 import React from "react";
-import ResultsTable from "./ResultsTable";
+import ResultsTable from "../components/ResultsTable";
 
-const ResultsPage = ({ stepsCount, results, onResetGame }) => {
+function ResultsPage({ stepsCount, results, onResetGame }) {
   const isRecord = results.length && stepsCount < Math.min(...results);
   return (
     <div>
       <p>Finished in {stepsCount} steps</p>
 
-      {isRecord ? <p>новый рекорд!!!</p> : null}
+      {isRecord && <p>новый рекорд!!!</p>}
       {results.length ? (
         <>
           <h3>Ваши достижения:</h3>
@@ -21,6 +21,6 @@ const ResultsPage = ({ stepsCount, results, onResetGame }) => {
       </button>
     </div>
   );
-};
+}
 
 export default ResultsPage;

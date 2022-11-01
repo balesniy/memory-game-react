@@ -1,59 +1,55 @@
 import React, { useState } from "react";
 
-import InitialPage from "./InitialPage";
-import ResultsPage from "./ResultsPage";
-import GamePage from "./GamePage";
-import PageLayout from "./PageLayout";
+import InitialPage from "./pages/InitialPage";
+import ResultsPage from "./pages/ResultsPage";
+import GamePage from "./pages/GamePage";
+import PageLayout from "./components/PageLayout";
 
-const Page = {
+const AppRout = {
   INITIAL: "initial",
   GAME: "game",
   RESULTS: "results",
 };
 
-export default function App({ getImages }) {
-  const [finishedItems, setFinishedItems] = useState([]);
+function App({ getImages }) {
   const [stepsCount, setStepsCount] = useState(0);
   const [images, setImages] = useState([]);
-  const [page, setPage] = useState(Page.INITIAL);
+  const [page, setPage] = useState(AppRout.INITIAL);
   const [results, setResults] = useState([]);
 
-  const handleReset = () => {
-    setResults([...results, stepsCount]);
-    resetGame();
+  const resetGame = () => {
+    setStepsCount(0);
+    setPage(AppRout.INITIAL);
   };
 
-  const resetGame = () => {
-    setFinishedItems([]);
-    setStepsCount(0);
-    setPage(Page.INITIAL);
+  const handleReset = () => {
+    setResults((items) => [...items, stepsCount]);
+    resetGame();
   };
 
   const handleStart = (pairsCount) => {
     setImages(getImages(pairsCount));
-    setPage(Page.GAME);
+    setPage(AppRout.GAME);
   };
 
   const showResults = () => {
-    setPage(Page.RESULTS);
+    setPage(AppRout.RESULTS);
   };
 
   const gameProps = {
-    finishedItems,
-    setFinishedItems,
     images,
     stepsCount,
     setStepsCount,
     onShowResults: showResults,
   };
 
-  const getPage = (page) => {
-    switch (page) {
-      case Page.INITIAL:
+  const getPage = (route) => {
+    switch (route) {
+      case AppRout.INITIAL:
         return <InitialPage onStart={handleStart} />;
-      case Page.GAME:
+      case AppRout.GAME:
         return <GamePage {...gameProps} />;
-      case Page.RESULTS:
+      case AppRout.RESULTS:
         return (
           <ResultsPage
             stepsCount={stepsCount}
@@ -68,3 +64,5 @@ export default function App({ getImages }) {
 
   return <PageLayout>{getPage(page)}</PageLayout>;
 }
+
+export default App;

@@ -1,19 +1,21 @@
 import React from "react";
 
-const ResultsTable = ({ current, results }) => {
+const MAX_ROWS = 5;
+
+function ResultsTable({ current, results }) {
   return (
     <table className="results">
       {[...results, current]
         .sort((a, b) => a - b)
-        .slice(0, 5)
-        .map((i, idx) => (
+        .slice(0, MAX_ROWS)
+        .map((i, index) => (
           <tr>
-            <td>{idx + 1}</td>
+            <td>{index + 1}</td>
             <td className={i === current ? "current" : ""}>{i}</td>
           </tr>
         ))}
     </table>
   );
-};
+}
 
 export default ResultsTable;

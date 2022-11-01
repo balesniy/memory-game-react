@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function PageLayout({ children }) {
+function PageLayout({ children }) {
   return <div className="text-center p-4 d-flex flex-column">{children}</div>;
 }
+
+export default PageLayout;

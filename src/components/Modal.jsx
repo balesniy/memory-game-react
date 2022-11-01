@@ -1,6 +1,6 @@
 import React from "react";
 
-const Modal = ({ children }) => {
+function Modal({ children }) {
   return (
     <div className="modal">
       <div className="modal-box">
@@ -9,6 +9,6 @@ const Modal = ({ children }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Modal;

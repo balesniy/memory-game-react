@@ -6,19 +6,28 @@
   "main": "src/index.js",
   "dependencies": {
     "axios": "0.18.0",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "sass": "^1.55.0"
   },
   "devDependencies": {
-    "typescript": "3.3.3"
+    "typescript": "3.3.3",
+    "eslint-config-htmlacademy": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .jsx --ext .js src/"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "htmlacademy/react-typescript"
+    ]
   },
   "browserslist": [
     ">0.2%",

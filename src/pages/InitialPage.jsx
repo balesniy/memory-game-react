@@ -1,6 +1,6 @@
 import React from "react";
 
-const InitialPage = ({ onStart }) => {
+function InitialPage({ onStart }) {
   const handleStart = (count) => {
     onStart(count);
   };
@@ -35,6 +35,6 @@ const InitialPage = ({ onStart }) => {
       </button>
     </div>
   );
-};
+}
 
 export default InitialPage;

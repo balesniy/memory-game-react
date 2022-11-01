@@ -1,6 +1,6 @@
 import React from "react";
 
-const Progress = ({ value, max }) => {
+function Progress({ value, max }) {
   // <progress id="file" max="100" value="70"> 70% </progress>
   return (
     <>
@@ -15,6 +15,6 @@ const Progress = ({ value, max }) => {
       </div>
     </>
   );
-};
+}
 
 export default Progress;

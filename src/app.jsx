@@ -2,10 +2,10 @@ import React, {
   useState,
 } from 'react';
 
-import InitialPage from './pages/InitialPage';
-import ResultsPage from './pages/ResultsPage';
-import GamePage from './pages/GamePage';
-import PageLayout from './components/PageLayout';
+import InitialPage from './pages/initial-page';
+import ResultsPage from './pages/results-page';
+import GamePage from './pages/game-page';
+import PageLayout from './components/page-layout';
 
 const AppRout = {
   INITIAL: 'initial',

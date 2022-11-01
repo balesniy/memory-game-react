@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultsTable from '../components/ResultsTable';
+import ResultsTable from '../components/results-table';
 
 function ResultsPage({
   stepsCount,

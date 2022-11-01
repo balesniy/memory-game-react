@@ -1,9 +1,9 @@
 import React, {
   useState,
 } from 'react';
-import Grid from '../components/Grid';
-import Progress from '../components/Progress';
-import Modal from '../components/Modal';
+import Grid from '../components/grid';
+import Progress from '../components/progress';
+import Modal from '../components/modal';
 
 function GamePage({
   images,

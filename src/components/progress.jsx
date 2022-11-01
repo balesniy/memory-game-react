@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Progress({ value, max }) {
   // <progress id="file" max="100" value="70"> 70% </progress>
@@ -9,7 +9,11 @@ function Progress({ value, max }) {
       </p>
       <div className="progress-wrapper">
         <div
-          style={{ width: `${(100 * value) / max}%` }}
+          style={{
+            width: `${
+              (100 * value) / max
+            }%`,
+          }}
           className="progress"
         />
       </div>

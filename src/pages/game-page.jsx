@@ -1,6 +1,4 @@
-import React, {
-  useState,
-} from 'react';
+import React, { useState } from 'react';
 import Grid from '../components/grid';
 import Progress from '../components/progress';
 import Modal from '../components/modal';
@@ -16,11 +14,10 @@ function GamePage({
     setFinishedItems,
   ] = useState([]);
 
-  const handleResultsClick =
-    () => {
-      setFinishedItems([]);
-      onShowResults();
-    };
+  const handleResultsClick = () => {
+    setFinishedItems([]);
+    onShowResults();
+  };
 
   // бизнес-логика, вычисляемое состояние
   const checkItems = (
@@ -48,17 +45,13 @@ function GamePage({
   return (
     <div>
       <Progress
-        value={
-          finishedItems.length
-        }
+        value={finishedItems.length}
         max={images.length}
       />
       <p>за {stepsCount} шагов</p>
       <Grid
         images={images}
-        finishedItems={
-          finishedItems
-        }
+        finishedItems={finishedItems}
         checkItems={checkItems}
       />
       {isWinner && (
@@ -66,9 +59,7 @@ function GamePage({
           <h3>You Win !</h3>
           <button
             className="btn btn-warning mt-4"
-            onClick={
-              handleResultsClick
-            }
+            onClick={handleResultsClick}
           >
             show results
           </button>

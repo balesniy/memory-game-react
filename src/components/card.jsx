@@ -1,8 +1,18 @@
-import React from "react";
+import React from 'react';
 
-function Card({ onCardClick, item, visible, finished, className }) {
-  const localClassName = `${visible ? "grid-card-show" : ""} ${
-    finished ? "grid-card-show grid-card-finished" : ""
+function Card({
+  onCardClick,
+  item,
+  visible,
+  finished,
+  className,
+}) {
+  const localClassName = `${
+    visible ? 'grid-card-show' : ''
+  } ${
+    finished
+      ? 'grid-card-show grid-card-finished'
+      : ''
   }`;
 
   return (

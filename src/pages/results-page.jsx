@@ -8,13 +8,11 @@ function ResultsPage({
 }) {
   const isRecord =
     results.length > 0 &&
-    stepsCount <
-      Math.min(...results);
+    stepsCount < Math.min(...results);
   return (
     <div>
       <p>
-        Finished in {stepsCount}{' '}
-        steps
+        Finished in {stepsCount} steps
       </p>
 
       {isRecord && (
@@ -29,9 +27,7 @@ function ResultsPage({
           />
         </>
       ) : (
-        <h3>
-          Это ваша первая победа!
-        </h3>
+        <h3>Это ваша первая победа!</h3>
       )}
       <button
         onClick={onResetGame}

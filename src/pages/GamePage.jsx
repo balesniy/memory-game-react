@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import Grid from "../components/Grid";
-import Progress from "../components/Progress";
-import Modal from "../components/Modal";
+import React, {
+  useState,
+} from 'react';
+import Grid from '../components/Grid';
+import Progress from '../components/Progress';
+import Modal from '../components/Modal';
 
 function GamePage({
   images,
@@ -9,37 +11,65 @@ function GamePage({
   setStepsCount,
   onShowResults,
 }) {
-  const [finishedItems, setFinishedItems] = useState([]);
-  
-  const handleResultsClick = () => {
-    setFinishedItems([]);
-    onShowResults();
-  }
-  
+  const [
+    finishedItems,
+    setFinishedItems,
+  ] = useState([]);
+
+  const handleResultsClick =
+    () => {
+      setFinishedItems([]);
+      onShowResults();
+    };
+
   // бизнес-логика, вычисляемое состояние
-  const checkItems = (firstIndex, secondIndex) => {
+  const checkItems = (
+    firstIndex,
+    secondIndex
+  ) => {
     setStepsCount((i) => i + 1);
-    if (images[firstIndex].url === images[secondIndex].url) {
-      setFinishedItems((items) => [...items, firstIndex, secondIndex]);
+    if (
+      images[firstIndex].url ===
+      images[secondIndex].url
+    ) {
+      setFinishedItems((items) => [
+        ...items,
+        firstIndex,
+        secondIndex,
+      ]);
     }
   };
 
   const isWinner =
-    finishedItems.length > 0 && finishedItems.length === images.length;
+    finishedItems.length > 0 &&
+    finishedItems.length ===
+      images.length;
 
   return (
     <div>
-      <Progress value={finishedItems.length} max={images.length} />
+      <Progress
+        value={
+          finishedItems.length
+        }
+        max={images.length}
+      />
       <p>за {stepsCount} шагов</p>
       <Grid
         images={images}
-        finishedItems={finishedItems}
+        finishedItems={
+          finishedItems
+        }
         checkItems={checkItems}
       />
       {isWinner && (
         <Modal>
           <h3>You Win !</h3>
-          <button className="btn btn-warning mt-4" onClick={handleResultsClick}>
+          <button
+            className="btn btn-warning mt-4"
+            onClick={
+              handleResultsClick
+            }
+          >
             show results
           </button>
         </Modal>

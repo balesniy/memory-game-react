@@ -21,7 +21,7 @@ function ResultsTable({
                   : ''
               }
             >
-              {i}
+              {result}
             </td>
           </tr>
         ))}

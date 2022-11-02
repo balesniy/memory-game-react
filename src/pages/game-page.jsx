@@ -1,46 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '../components/grid';
 import Progress from '../components/progress';
 import Modal from '../components/modal';
 
 function GamePage({
-  images,
-  stepsCount,
-  setStepsCount,
-  onShowResults,
+  images = [],
+  stepsCount = 0,
 }) {
-  const [
-    finishedItems,
-    setFinishedItems,
-  ] = useState([]);
-
-  const handleResultsClick = () => {
-    setFinishedItems([]);
-    onShowResults();
-  };
-
-  // бизнес-логика, вычисляемое состояние
-  const checkItems = (
-    firstIndex,
-    secondIndex
-  ) => {
-    setStepsCount((i) => i + 1);
-    if (
-      images[firstIndex].url ===
-      images[secondIndex].url
-    ) {
-      setFinishedItems((items) => [
-        ...items,
-        firstIndex,
-        secondIndex,
-      ]);
-    }
-  };
-
-  const isWinner =
-    finishedItems.length > 0 &&
-    finishedItems.length ===
-      images.length;
+  const finishedItems = [0, 1];
+  const isWinner = false;
 
   return (
     <div>
@@ -57,10 +25,7 @@ function GamePage({
       {isWinner && (
         <Modal>
           <h3>You Win !</h3>
-          <button
-            className="btn btn-warning mt-4"
-            onClick={handleResultsClick}
-          >
+          <button className="btn btn-warning mt-4">
             show results
           </button>
         </Modal>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Card({
-  onCardClick,
   item,
   visible,
   finished,

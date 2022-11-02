@@ -2,13 +2,10 @@ import React from 'react';
 import ResultsTable from '../components/results-table';
 
 function ResultsPage({
-  stepsCount,
-  results,
-  onResetGame,
+  stepsCount = 0,
+  results = [],
 }) {
-  const isRecord =
-    results.length > 0 &&
-    stepsCount < Math.min(...results);
+  const isRecord = true;
   return (
     <div>
       <p>
@@ -29,10 +26,7 @@ function ResultsPage({
       ) : (
         <h3>Это ваша первая победа!</h3>
       )}
-      <button
-        onClick={onResetGame}
-        className="btn btn-warning mb-4"
-      >
+      <button className="btn btn-warning mb-4">
         New Game
       </button>
     </div>

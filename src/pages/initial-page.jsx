@@ -1,9 +1,6 @@
 import React from 'react';
 
-function InitialPage({ onStart }) {
-  const handleStart = (count) => {
-    onStart(count);
-  };
+function InitialPage() {
   return (
     <div>
       <h2>Добро пожаловать!</h2>
@@ -27,19 +24,16 @@ function InitialPage({ onStart }) {
 
       <button
         className="btn btn-warning mb-4 mr-4"
-        onClick={() => handleStart(6)}
       >
         start 3Х4
       </button>
       <button
         className="btn btn-warning mb-4 mr-4"
-        onClick={() => handleStart(8)}
       >
         start 4Х4
       </button>
       <button
         className="btn btn-warning mb-4"
-        onClick={() => handleStart(10)}
       >
         start 4Х5
       </button>

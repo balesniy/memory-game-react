@@ -1,23 +1,18 @@
 import React from 'react';
 
-function Progress({ value, max }) {
-  // <progress id="file" max="100" value="70"> 70% </progress>
+function Progress() {
   return (
-    <>
-      <p>
-        Открыто: {value} / {max}
-      </p>
+    <div>
+      <p>Открыто: 6 / 12</p>
       <div className="progress-wrapper">
         <div
           style={{
-            width: `${
-              (100 * value) / max
-            }%`,
+            width: '50%',
           }}
           className="progress"
         />
       </div>
-    </>
+    </div>
   );
 }
 

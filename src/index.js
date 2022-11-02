@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import "./styles.scss";
-import getImages from "./data.js";
+import './styles.scss';
 
-import App from "./app";
+import App from './app';
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App getImages={getImages} />, rootElement);
+const rootElement =
+  document.getElementById('root');
+ReactDOM.render(<App />, rootElement);

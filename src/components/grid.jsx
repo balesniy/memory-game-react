@@ -1,79 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import getImages from '../data.js';
 
-import Card from './card';
-
-const TIMEOUT = 600;
-
-function Grid({
-  images = [],
-  finishedItems,
-  checkItems,
-}) {
-  const [
-    visibleItems,
-    setVisibleItems,
-  ] = useState([]);
-
-  const handleCardClick = (index) => {
-    if (
-      finishedItems.includes(index) ||
-      visibleItems.includes(index)
-    ) {
-      return;
-    }
-
-    switch (visibleItems.length) {
-      case 0:
-        // we need intermediate case without timer
-        // case 2:
-        setVisibleItems([index]);
-        break;
-      case 1:
-        setVisibleItems((items) => [
-          ...items,
-          index,
-        ]);
-        checkItems(
-          visibleItems[0],
-          index
-        );
-        // You don’t need Effects to handle user events.
-        setTimeout(() => {
-          setVisibleItems([]);
-        }, TIMEOUT);
-        break;
-      default:
-        setVisibleItems([]);
-    }
-  };
-
-  // fixme after markup changes
-  const columnsCount =
-    images.length === 12 ? 3 : 4;
-
+function Grid() {
+  const [url1, url2, url3] =
+    getImages(3); // fixme
   return (
     <div className="container">
       <div className="row no-gutters">
-        {images.map((item, index) => (
-          <Card
-            key={item.id}
-            item={item}
-            visible={visibleItems.includes(
-              index
-            )}
-            finished={finishedItems.includes(
-              index
-            )}
-            className={`${
-              columnsCount === 3
-                ? 'col-4'
-                : 'col-3'
-            }`}
-            onCardClick={() =>
-              handleCardClick(index)
-            }
+        <div className="grid-card card col-4">
+          <img
+            className="img-thumbnail img-fluid grid-img"
+            src={url1}
+            alt="description"
           />
-        ))}
+        </div>
+        <div className="grid-card grid-card-show card col-4">
+          <img
+            className="img-thumbnail img-fluid grid-img"
+            src={url2}
+            alt="description"
+          />
+        </div>
+        <div className="grid-card grid-card-finished card col-4">
+          <img
+            className="img-thumbnail img-fluid grid-img"
+            src={url3}
+            alt="description"
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,11 @@
 import React from 'react';
 
+const GAME_LEVELS = [
+  { pairsCount: 6, fieldSize: '3Х4' },
+  { pairsCount: 8, fieldSize: '4Х4' },
+  { pairsCount: 10, fieldSize: '4Х5' },
+];
+
 function InitialPage({ onStart }) {
   const handleStart = (count) => {
     onStart(count);
@@ -24,25 +30,19 @@ function InitialPage({ onStart }) {
         две. Если они совпадают – игрок
         забирает их и получает ещё ход.
       </p>
-
-      <button
-        className="btn btn-warning mb-4 mr-4"
-        onClick={() => handleStart(6)}
-      >
-        start 3Х4
-      </button>
-      <button
-        className="btn btn-warning mb-4 mr-4"
-        onClick={() => handleStart(8)}
-      >
-        start 4Х4
-      </button>
-      <button
-        className="btn btn-warning mb-4"
-        onClick={() => handleStart(10)}
-      >
-        start 4Х5
-      </button>
+      {GAME_LEVELS.map(
+        ({ pairsCount, fieldSize }) => (
+          <button
+            key={pairsCount}
+            className="btn btn-warning mb-4 mr-4"
+            onClick={() =>
+              handleStart(pairsCount)
+            }
+          >
+            {`start ${fieldSize}`}
+          </button>
+        )
+      )}
     </div>
   );
 }

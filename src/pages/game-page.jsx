@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Grid from '../components/grid';
 import Progress from '../components/progress';
-import Modal from '../components/modal';
+// import Modal from '../components/modal';
 
 function GamePage({
   images,
@@ -12,7 +12,7 @@ function GamePage({
   const [
     finishedItems,
     setFinishedItems,
-  ] = useState([]);
+  ] = useState([0, 1]);
 
   const handleResultsClick = () => {
     setFinishedItems([]);
@@ -20,27 +20,30 @@ function GamePage({
   };
 
   // бизнес-логика, вычисляемое состояние
-  const checkItems = (
-    firstIndex,
-    secondIndex
-  ) => {
+  // const checkItems = (
+  //   firstIndex,
+  //   secondIndex
+  // ) => {
+  //   setStepsCount((i) => i + 1);
+  //   if (
+  //     images[firstIndex].url ===
+  //     images[secondIndex].url
+  //   ) {
+  //     setFinishedItems((items) => [
+  //       ...items,
+  //       firstIndex,
+  //       secondIndex,
+  //     ]);
+  //   }
+  // };
+  const checkItems = () => {
     setStepsCount((i) => i + 1);
-    if (
-      images[firstIndex].url ===
-      images[secondIndex].url
-    ) {
-      setFinishedItems((items) => [
-        ...items,
-        firstIndex,
-        secondIndex,
-      ]);
-    }
   };
 
-  const isWinner =
-    finishedItems.length > 0 &&
-    finishedItems.length ===
-      images.length;
+  // const isWinner =
+  //   finishedItems.length > 0 &&
+  //   finishedItems.length ===
+  //     images.length;
 
   return (
     <div>
@@ -54,7 +57,7 @@ function GamePage({
         finishedItems={finishedItems}
         checkItems={checkItems}
       />
-      {isWinner && (
+      {/* {isWinner && (
         <Modal>
           <h3>You Win !</h3>
           <button
@@ -64,7 +67,13 @@ function GamePage({
             show results
           </button>
         </Modal>
-      )}
+      )} */}
+      <button
+        className="btn btn-warning mt-4"
+        onClick={handleResultsClick}
+      >
+        show results
+      </button>
     </div>
   );
 }

@@ -21,7 +21,7 @@ function Card({
       onClick={onCardClick}
     >
       <img
-        className={`img-thumbnail img-fluid grid-img`}
+        className="img-thumbnail img-fluid grid-img"
         src={item.url}
         alt={item.description}
       />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Card from './card';
 
-const TIMEOUT = 600;
+// const TIMEOUT = 600;
 
 function Grid({
   images = [],
@@ -24,8 +24,8 @@ function Grid({
 
     switch (visibleItems.length) {
       case 0:
-        // we need intermediate case without timer
-        // case 2:
+      // we need intermediate case without timer
+      case 2:
         setVisibleItems([index]);
         break;
       case 1:
@@ -38,9 +38,9 @@ function Grid({
           index
         );
         // You don’t need Effects to handle user events.
-        setTimeout(() => {
-          setVisibleItems([]);
-        }, TIMEOUT);
+        // setTimeout(() => {
+        //   setVisibleItems([]);
+        // }, TIMEOUT);
         break;
       default:
         setVisibleItems([]);

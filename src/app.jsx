@@ -20,30 +20,31 @@ function App({ getImages }) {
   const [page, setPage] = useState(
     AppRout.Initial
   );
-  const [results, setResults] =
-    useState({
-      12: [],
-      16: [],
-      20: [],
-    });
+  const results = [1, 2, 3, 42];
+  // const [results, setResults] =
+  //   useState({
+  //     12: [],
+  //     16: [],
+  //     20: [],
+  //   });
 
-  const gameSize = images.length;
+  // const gameSize = images.length;
 
   const resetGame = () => {
     setStepsCount(0);
     setPage(AppRout.Initial);
   };
 
-  const handleReset = () => {
-    setResults((prev) => ({
-      ...prev,
-      [gameSize]: [
-        ...prev[gameSize],
-        stepsCount,
-      ],
-    }));
-    resetGame();
-  };
+  // const handleReset = () => {
+  //   setResults((prev) => ({
+  //     ...prev,
+  //     [gameSize]: [
+  //       ...prev[gameSize],
+  //       stepsCount,
+  //     ],
+  //   }));
+  //   resetGame();
+  // };
 
   const handleStart = (pairsCount) => {
     setImages(getImages(pairsCount));
@@ -77,8 +78,8 @@ function App({ getImages }) {
         return (
           <ResultsPage
             stepsCount={stepsCount}
-            onResetGame={handleReset}
-            results={results[gameSize]}
+            onResetGame={resetGame}
+            results={results}
           />
         );
       default:

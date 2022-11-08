@@ -1,24 +1,12 @@
 import React from 'react';
 
-function Card({
-  onCardClick,
-  item,
-  visible,
-  finished,
-  className,
-}) {
-  const localClassName = `${
-    visible ? 'grid-card-show' : ''
-  } ${
-    finished
-      ? 'grid-card-show grid-card-finished'
-      : ''
-  }`;
-
+function Card({ item, isFinished }) {
+  const localClassName = isFinished
+    ? 'grid-card-finished'
+    : '';
   return (
     <div
-      className={`grid-card card ${className} ${localClassName}`}
-      onClick={onCardClick}
+      className={`grid-card grid-card-show col-4 card ${localClassName}`}
     >
       <img
         className="img-thumbnail img-fluid grid-img"

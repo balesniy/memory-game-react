@@ -3,23 +3,20 @@ import Grid from '../components/grid';
 import Progress from '../components/progress';
 import Modal from '../components/modal';
 
-function GamePage({
-  images,
-  stepsCount,
-  setStepsCount,
-  onShowResults,
-}) {
+function GamePage({ images = [] }) {
+  const [stepsCount, setStepsCount] =
+    useState(0);
+
   const [
     finishedItems,
     setFinishedItems,
   ] = useState([]);
 
-  const handleResultsClick = () => {
+  const handleReset = () => {
     setFinishedItems([]);
-    onShowResults();
+    setStepsCount(0);
   };
 
-  // бизнес-логика, вычисляемое состояние
   const checkItems = (
     firstIndex,
     secondIndex
@@ -57,11 +54,12 @@ function GamePage({
       {isWinner && (
         <Modal>
           <h3>You Win !</h3>
+          <p>за {stepsCount} шагов</p>
           <button
             className="btn btn-warning mt-4"
-            onClick={handleResultsClick}
+            onClick={handleReset}
           >
-            show results
+            reset game
           </button>
         </Modal>
       )}

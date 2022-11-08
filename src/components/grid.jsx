@@ -47,10 +47,6 @@ function Grid({
     }
   };
 
-  // fixme after markup changes
-  const columnsCount =
-    images.length === 12 ? 3 : 4;
-
   return (
     <div className="container">
       <div className="row no-gutters">
@@ -58,17 +54,12 @@ function Grid({
           <Card
             key={item.id}
             item={item}
-            visible={visibleItems.includes(
+            isVisible={visibleItems.includes(
               index
             )}
-            finished={finishedItems.includes(
+            isFinished={finishedItems.includes(
               index
             )}
-            className={`${
-              columnsCount === 3
-                ? 'col-4'
-                : 'col-3'
-            }`}
             onCardClick={() =>
               handleCardClick(index)
             }

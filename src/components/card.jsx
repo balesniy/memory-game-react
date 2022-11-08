@@ -3,21 +3,20 @@ import React from 'react';
 function Card({
   onCardClick,
   item,
-  visible,
-  finished,
-  className,
+  isVisible,
+  isFinished,
 }) {
   const localClassName = `${
-    visible ? 'grid-card-show' : ''
+    isVisible ? 'grid-card-show' : ''
   } ${
-    finished
+    isFinished
       ? 'grid-card-show grid-card-finished'
       : ''
   }`;
 
   return (
     <div
-      className={`grid-card card ${className} ${localClassName}`}
+      className={`grid-card col-4 card ${localClassName}`}
       onClick={onCardClick}
     >
       <img

@@ -1,53 +1,35 @@
 import React, { useState } from 'react';
 
-import InitialPage from './pages/initial-page';
 import ResultsPage from './pages/results-page';
 import GamePage from './pages/game-page';
 import PageLayout from './components/page-layout';
 
 const AppRout = {
-  Initial: 'initial',
   Game: 'game',
   Results: 'results',
 };
 
-function App({ getImages }) {
+function App({ images }) {
   const [stepsCount, setStepsCount] =
     useState(0);
-  const [images, setImages] = useState(
-    []
-  );
+
   const [page, setPage] = useState(
-    AppRout.Initial
+    AppRout.Game
   );
   const [results, setResults] =
-    useState({
-      12: [],
-      16: [],
-      20: [],
-    });
-
-  const gameSize = images.length;
+    useState([]);
 
   const resetGame = () => {
     setStepsCount(0);
-    setPage(AppRout.Initial);
+    setPage(AppRout.Game);
   };
 
   const handleReset = () => {
-    setResults((prev) => ({
+    setResults((prev) => [
       ...prev,
-      [gameSize]: [
-        ...prev[gameSize],
-        stepsCount,
-      ],
-    }));
+      stepsCount,
+    ]);
     resetGame();
-  };
-
-  const handleStart = (pairsCount) => {
-    setImages(getImages(pairsCount));
-    setPage(AppRout.Game);
   };
 
   const showResults = () => {
@@ -63,12 +45,6 @@ function App({ getImages }) {
 
   const getPage = (route) => {
     switch (route) {
-      case AppRout.Initial:
-        return (
-          <InitialPage
-            onStart={handleStart}
-          />
-        );
       case AppRout.Game:
         return (
           <GamePage {...gameProps} />
@@ -78,7 +54,7 @@ function App({ getImages }) {
           <ResultsPage
             stepsCount={stepsCount}
             onResetGame={handleReset}
-            results={results[gameSize]}
+            results={results}
           />
         );
       default:

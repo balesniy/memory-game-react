@@ -5,7 +5,6 @@ function Card({
   item,
   visible,
   finished,
-  className,
 }) {
   const localClassName = `${
     visible ? 'grid-card-show' : ''
@@ -17,7 +16,7 @@ function Card({
 
   return (
     <div
-      className={`grid-card card ${className} ${localClassName}`}
+      className={`grid-card col-4 card ${localClassName}`}
       onClick={onCardClick}
     >
       <img
